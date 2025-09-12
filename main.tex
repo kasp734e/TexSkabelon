@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[danish]{babel}
+\usepackage{tikz}
+\usepackage[a4paper, margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{subcaption}
+\usepackage{circuitikz}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{longtable}
+\usepackage{afterpage}
+\usepackage{xltabular}
+\usepackage{listings}
+\lstset{language=C}
+\usepackage{changepage}
+\usepackage{booktabs}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{minted}
+\usepackage{url}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{verbatim}
+
+
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[L]{\includegraphics[height=1cm]{AULogo.png}} 
+\fancyhead[R]{\textcolor[RGB]{7,61,144}{Institut for Elektro- og Computerteknologi \\ Elektronik, Elektrisk energiteknologi og Softwareteknologi}} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt} 
+\fancyfoot[c]{\thepage}
+\setlength{\headsep}{1.5cm}
+
+\definecolor{lightgray}{gray}{0.9}
+
+
+\begin{document}
+
+\renewcommand{\arraystretch}{1.4}
+\bigskip
+\begin{center}
+    \Huge \textbf{Projekt Navn}
+    \\ \bigskip
+    \large xx/xx-xxxx \\
+
+\end{center}
+\bigskip
+\renewcommand{\arraystretch}{2} % Increase row height
+
+\begin{center}
+\begin{tabular}{|c|c|}
+    \hline 
+    \rowcolor{lightgray}
+    \textbf{Navn} & \textbf{Studienummer}\\
+    \hline
+    Navn & 2024xxxxx\\
+    \hline
+\end{tabular} \\ \vspace{0.5cm}
+
+
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{center}
+\includegraphics[width=0.5\linewidth]{AUSegl.png}
+\end{center}
+
+\newpage
+\tableofcontents
+
+\newpage
+% Lav afsnittet inde i afsnit/xxxx og inkluder det
+%\include{Afsnit/x}
+
+\include{Afsnit/exercise1}
+\newpage
+
+\include{Afsnit/exercise2}
+\newpage
+
+\include{Afsnit/exercise3}
+\newpage
+
+\include{Afsnit/exercise4}
+\newpage
+
+\include{Afsnit/exercise5}
+\newpage
+
+\include{Afsnit/exercise6}
+\newpage
+
+\include{Afsnit/exercise7}
+\newpage
+
+\include{Afsnit/exercise8}
+\newpage
+
+\include{Afsnit/exercise9}
+\newpage
+
+\include{Afsnit/exercise10}
+\newpage
+\end{document}
