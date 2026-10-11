@@ -12,3 +12,11 @@ $pdflatex = "lualatex %O %S";
 
 # Count characters in the body text before every build; writes Antal-tegn.tex (shown on the cover)
 system("python3", "tegntaelling.py");
+
+# After a successful build of main.tex, copy main.pdf to Eksempel.pdf (the example PDF linked from README.md)
+END {
+    if ($? == 0 && -e "main.pdf" && -e "main.tex") {
+        require File::Copy;
+        File::Copy::copy("main.pdf", "Eksempel.pdf");
+    }
+}
