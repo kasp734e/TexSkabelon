@@ -13,10 +13,14 @@ $pdflatex = "lualatex %O %S";
 # Count characters in the body text before every build; writes Antal-tegn.tex (shown on the cover)
 system("python3", "tegntaelling.py");
 
-# After a successful build of main.tex, copy main.pdf to Eksempel.pdf (the example PDF linked from README.md)
+# After a successful build of main.tex, copy main.pdf to Eksempel.pdf (the example PDF linked from README.md).
+# Only in the TexSkabelon repo itself, not in reports created from the template.
 END {
-    if ($? == 0 && -e "main.pdf" && -e "main.tex") {
+    my $status = $?;  # latexmk's exit status; the backticks below overwrite $?
+    my $remote = `git config --get remote.origin.url 2>/dev/null`;
+    if ($status == 0 && $remote =~ m{kasp734e/TexSkabelon} && -e "main.pdf" && -e "main.tex") {
         require File::Copy;
         File::Copy::copy("main.pdf", "Eksempel.pdf");
     }
+    $? = $status;     # keep latexmk's exit status
 }

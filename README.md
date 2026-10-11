@@ -18,7 +18,7 @@ Brug den med **Use this template** øverst på GitHub-siden.
 latexmk main.tex
 ```
 
-`.latexmkrc` sørger for at bruge LuaLaTeX og biber, kører tegntællingen før hvert build og kopierer `main.pdf` til `Eksempel.pdf` efter hvert vellykket build.
+`.latexmkrc` sørger for at bruge LuaLaTeX og biber, kører tegntællingen før hvert build og (kun i selve TexSkabelon-repoet, ikke i kopier) opdaterer `Eksempel.pdf` efter hvert vellykket build.
 
 Med VS Code og udvidelsen **LaTeX Workshop** bygges rapporten automatisk, når du gemmer (se `.vscode/settings.json`).
 

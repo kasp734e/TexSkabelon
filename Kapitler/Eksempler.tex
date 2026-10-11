@@ -28,13 +28,16 @@ Enheder skrives med siunitx: \qty{6,5}{\kilo\watt} og \num{1234,5}.
 \label{subsec:tabel}
 \begin{table}[H]
     \centering
-    \begin{tabular}{lrr}
-        \toprule
+    \renewcommand{\arraystretch}{1.6} % højere rækker, som på forsiden
+    \begin{tabular}{|l|r|r|}
+        \hline
+        \rowcolor{lightgray}
         \textbf{Komponent} & \textbf{Antal} & \textbf{Pris} \\
-        \midrule
+        \hline
         Modstand  & 10 & \qty{0,50}{kr} \\
+        \hline
         Kondensator & 4 & \qty{1,25}{kr} \\
-        \bottomrule
+        \hline
     \end{tabular}
     \caption{Eksempel på en tabel}
     \label{tab:eksempel}
