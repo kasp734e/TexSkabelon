@@ -1,0 +1,61 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+% Eksempler på de mest brugte ting i skabelonen. Slet kapitlet (og linjen i main.tex), når du ikke har brug for det.
+
+\section{Eksempler}
+\label{sec:eksempler}
+
+\subsection{Tekst, forkortelser og kilder}
+\label{subsec:tekst}
+Forkortelser skrives med \verb|\ac{au}|: første gang \ac{au}, derefter \ac{au}.
+Kilder angives med \verb|\cite{AUWebsite}| og bliver til en fodnote\cite{AUWebsite}.
+Henvisninger laves med \verb|\cref|: se \cref{fig:segl}, \cref{tab:eksempel}, \cref{eq:ohm}, \cref{lst:hej} og \cref{app:eksempel}.
+Enheder skrives med siunitx: \qty{6,5}{\kilo\watt} og \num{1234,5}.
+\todo{En note i margenen}
+
+\subsection{Figur}
+\label{subsec:figur}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{auSegl.pdf} % billeder lægges i Billeder/ og skrives som {navn.png}
+    \caption{Aarhus Universitets segl}
+    \label{fig:segl}
+\end{figure}
+
+\subsection{Tabel}
+\label{subsec:tabel}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lrr}
+        \toprule
+        \textbf{Komponent} & \textbf{Antal} & \textbf{Pris} \\
+        \midrule
+        Modstand  & 10 & \qty{0,50}{kr} \\
+        Kondensator & 4 & \qty{1,25}{kr} \\
+        \bottomrule
+    \end{tabular}
+    \caption{Eksempel på en tabel}
+    \label{tab:eksempel}
+\end{table}
+
+\subsection{Formel}
+\label{subsec:formel}
+\begin{equation}
+    U = R \cdot I
+    \label{eq:ohm}
+\end{equation}
+
+\subsection{Kode}
+\label{subsec:kode}
+\begin{lstlisting}[caption={Hello world i C++}, label={lst:hej}]
+#include <iostream>
+
+int main() {
+    std::cout << "Hej verden" << std::endl; // udskriv
+    return 0;
+}
+\end{lstlisting}
+
+\end{document}

@@ -1,0 +1,120 @@
+% Preamble for main.tex (packages, settings, header/footer).
+% Loaded from main.tex with \input; everything here applies to the whole report.
+
+% --- Language, fonts and typography ---
+\usepackage{fontspec}                      % system fonts (requires LuaLaTeX, see .latexmkrc)
+% AU Passata (installed in ~/Library/Fonts) as the main font. It has no italic,
+% so \emph/\textit use a slanted version of the upright font.
+% Falls back to the default font (Latin Modern) if AU Passata isn't installed.
+\IfFontExistsTF{AU Passata}{
+\setmainfont{AU Passata}[
+    ItalicFont         = AU Passata,
+    ItalicFeatures     = {FakeSlant = 0.2},
+    BoldItalicFont     = AU Passata Bold,
+    BoldItalicFeatures = {FakeSlant = 0.2}
+]}{}
+\usepackage[danish]{babel}                 % Danish
+\usepackage{csquotes}                      % language-aware quotes; recommended by biblatex with babel
+\usepackage{microtype}                     % finer spacing, fewer overfull lines
+\usepackage{parskip}                       % blank line between paragraphs instead of indentation
+\usepackage{ragged2e}                      % \justifying, \RaggedRight etc.
+\usepackage{lipsum}                        % placeholder text: \lipsum[1-2]
+
+% --- Page layout ---
+\usepackage[
+    a4paper, margin=0.75in,
+    headheight=33pt, headsep=1.5cm,        % room for the logo header
+    includehead,                           % keep the header inside the top margin
+    footskip=1cm                           % page number sits in the bottom margin, 1 cm below the text
+]{geometry}
+\usepackage{fancyhdr}                      % header/footer
+\usepackage[bottom]{footmisc}              % footnotes at the bottom of the page
+\raggedbottom
+
+% --- Graphics, colors and figures ---
+\usepackage{graphicx}                      % includegraphics
+\graphicspath{{Billeder/}{../Billeder/}{../}} % images in Billeder/ (or the root) are found, also when compiling a chapter alone
+\usepackage[table]{xcolor}                 % colors in text and tables
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{float}                         % float placement (H)
+\usepackage{caption}                       % caption customization
+\usepackage{subcaption}                    % subfigures side by side
+\usepackage{pdfpages}                      % include PDF pages: \includepdf[pages=-]{fil.pdf}
+
+% --- Tables and lists ---
+\usepackage{booktabs}                      % nicer tables
+\usepackage{array}                         % table column control
+\usepackage{tabularx}                      % tables with auto-width X columns
+\usepackage{multirow}
+\usepackage{longtable}                     % multipage tables
+\usepackage{enumitem}                      % customizable lists (e.g. [label=\alph*)])
+
+% --- Math, units and code ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}                       % units: \qty{6.5}{\kilo\watt}, \num{1234.5}
+\sisetup{output-decimal-marker={,}, group-separator={.}} % Danish number format
+\usepackage{listings}                      % code blocks (fast, no shell-escape)
+
+% --- Writing aids ---
+\usepackage{comment}                       % \begin{comment} ... \end{comment}
+\usepackage[colorinlistoftodos]{todonotes} % \todo{...} in the margin, \listoftodos
+\usepackage{acro}                          % abbreviations: \DeclareAcronym, \ac{...}, \printacronyms
+\acsetup{list/display=all}                 % list every declared abbreviation, used or not
+
+\usepackage[titletoc, title]{appendix}     % \begin{appendices}: sections become "Bilag A", "Bilag B", ...
+
+% --- Bibliography ---
+\usepackage[
+    backend=biber,
+    style=verbose-trad2,
+    bibstyle=numeric,
+    autocite=footnote
+]{biblatex}
+\let\cite\autocite
+\addbibresource{references.bib}
+
+% --- Cross-references (load last, in this order) ---
+\usepackage{xurl}                          % line breaks anywhere in long URLs
+\usepackage[hidelinks]{hyperref}           % hyperlinks
+\usepackage[danish, noabbrev]{cleveref}    % \cref{fig:x} -> "figur 1"
+\crefname{appendix}{bilag}{bilag}           % \cref{app:x} -> "bilag A"
+\Crefname{appendix}{Bilag}{Bilag}
+\crefname{lstlisting}{kodeudsnit}{kodeudsnit} % \cref{lst:x} -> "kodeudsnit 1"
+\Crefname{lstlisting}{Kodeudsnit}{Kodeudsnit}
+
+
+% listings configuration (C++/cpp style; change language per listing with [language=Python])
+\lstset{
+language=C++,
+basicstyle=\ttfamily\small,
+numbers=left,
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{gray}\itshape,
+stringstyle=\color{teal},
+numberstyle=\tiny,
+frame=single,
+breaklines=true,
+showstringspaces=false,
+captionpos=b
+}
+\renewcommand{\lstlistingname}{Kodeudsnit}
+
+% Header/footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\includegraphics[height=1cm]{AuLogo.pdf}}
+\fancyhead[R]{\textcolor[RGB]{7,61,144}{Institut for Elektro- og Computerteknologi \\ Elektronik, Elektrisk energiteknologi og Softwareteknologi}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
+
+\definecolor{lightgray}{gray}{0.9}
+\usepackage{subfiles} % Best loaded last in the preamble
+\input{\subfix{Forkortelser}}           % abbreviations; \subfix finds the file when compiling a chapter on its own
+% Character count, generated by tegntaelling.py on every build (see .latexmkrc)
+\IfFileExists{\subfix{Antal-tegn.tex}}{\input{\subfix{Antal-tegn}}}{%
+    \newcommand{\antaltegn}{?}\newcommand{\antalnormalsider}{?}}

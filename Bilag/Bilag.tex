@@ -1,0 +1,24 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+% Hvert bilag er en \section. I appendices-miljøet i main.tex bliver de til
+% "Bilag A", "Bilag B" osv., også i indholdsfortegnelsen.
+% Henvis til et bilag i teksten med \cref{app:eksempel} -> "bilag A".
+%
+% PDF-filer lægges i denne mappe (Bilag/) og indsættes med \includepdf.
+% \subfix{...} gør, at stien også virker, når bilaget kompileres for sig selv.
+%
+% Et PDF-bilag med flere sider indsættes sådan:
+%   \includepdf[pages=1, scale=0.8, pagecommand={\section{Navn}\label{app:navn}}]{\subfix{fil.pdf}}
+%   \includepdf[pages=2-, scale=0.8, pagecommand={}]{\subfix{fil.pdf}}
+% Første linje sætter bilagets overskrift oven på PDF'ens første side, anden linje
+% tager resten af siderne (slet den, hvis PDF'en kun har én side).
+% scale=0.8 giver plads til headeren og sidetallet.
+
+% --- Eksempel ---
+\section{Eksempel}
+\label{app:eksempel}
+\todo[inline]{Læg bilag som PDF i Bilag/ og indsæt dem med \textbackslash includepdf (se kommentaren øverst)}
+
+\end{document}

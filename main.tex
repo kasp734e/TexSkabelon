@@ -1,120 +1,43 @@
-\documentclass{article}
-\usepackage{graphicx}
-\usepackage[danish]{babel}
-\usepackage{tikz}
-\usepackage[a4paper, margin=0.75in]{geometry}
-\usepackage{amsmath}
-\usepackage{siunitx}
-\usepackage{subcaption}
-\usepackage{circuitikz}
-\usepackage[table]{xcolor}
-\usepackage{tabularx}
-\usepackage{ragged2e}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{colortbl}
-\usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
-\usepackage{xcolor}
-\usepackage{enumitem}
-\usepackage{adjustbox}
-\usepackage[utf8]{inputenc}
-\usepackage{array}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{longtable}
-\usepackage{afterpage}
-\usepackage{xltabular}
-\usepackage{listings}
-\lstset{language=C}
-\usepackage{changepage}
-\usepackage{booktabs}
-\usepackage{float}
-\restylefloat{table}
-\usepackage{minted}
-\usepackage{url}
-\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
-\usepackage{xurl}
-\usepackage{verbatim}
-
-
-\pagestyle{fancy}
-\fancyhf{} 
-\fancyhead[L]{\includegraphics[height=1cm]{AULogo.png}} 
-\fancyhead[R]{\textcolor[RGB]{7,61,144}{Institut for Elektro- og Computerteknologi \\ Elektronik, Elektrisk energiteknologi og Softwareteknologi}} 
-\renewcommand{\headrulewidth}{0pt} 
-\renewcommand{\footrulewidth}{0pt} 
-\fancyfoot[c]{\thepage}
-\setlength{\headsep}{1.5cm}
-
-\definecolor{lightgray}{gray}{0.9}
-
+\documentclass[11pt]{article}
+% The preamble lives in Preamble.tex. The fallback path is used when a chapter in
+% Kapitler/ is compiled on its own (subfiles then reads this file from Kapitler/).
+\IfFileExists{Preamble.tex}{\input{Preamble}}{\input{../Preamble}}
 
 \begin{document}
+\pagenumbering{roman} % forside og indhold (nummereres ikke synligt)
+\fancyfoot{}          % ingen sidetal før første kapitel
 
-\renewcommand{\arraystretch}{1.4}
-\bigskip
-\begin{center}
-    \Huge \textbf{Projekt Navn}
-    \\ \bigskip
-    \large xx/xx-xxxx \\
-
-\end{center}
-\bigskip
-\renewcommand{\arraystretch}{2} % Increase row height
-
-\begin{center}
-\begin{tabular}{|c|c|}
-    \hline 
-    \rowcolor{lightgray}
-    \textbf{Navn} & \textbf{Studienummer}\\
-    \hline
-    Navn & 2024xxxxx\\
-    \hline
-\end{tabular} \\ \vspace{0.5cm}
-
-
-\end{center}
-
-\vspace{0.5cm}
-
-\begin{center}
-\includegraphics[width=0.5\linewidth]{AUSegl.png}
-\end{center}
+\subfile{Kapitler/Forside}
 
 \newpage
+\listoftodos
+
 \tableofcontents
 
-\newpage
-% Lav afsnittet inde i afsnit/xxxx og inkluder det
-%\include{Afsnit/x}
+\section*{Forkortelser}
+\phantomsection % link target for the entry below
+\addtocontents{toc}{\protect\contentsline{section}{Forkortelser}{}{\csname @currentHref\endcsname}} % in the TOC without page number
+\printacronyms[heading=none]
 
-\include{Afsnit/exercise1}
 \newpage
+\pagenumbering{arabic} % starter forfra på side 1
+\fancyfoot[C]{\thepage}
 
-\include{Afsnit/exercise2}
+% Kapitler: lav en fil i Kapitler/ (kopiér fx Kapitler/Indledning.tex) og tilføj den her.
+% Kun kapitler mellem \pagenumbering{arabic} og kildelisten tælles med i tegntællingen.
+\subfile{Kapitler/Indledning}
 \newpage
+\subfile{Kapitler/Eksempler}
+\newpage
+\subfile{Kapitler/Konklusion}
 
-\include{Afsnit/exercise3}
 \newpage
+\printbibliography[heading=bibintoc, title=Kildeliste]
 
-\include{Afsnit/exercise4}
 \newpage
+\begin{appendices}
+\crefalias{section}{appendix} % \cref names these "bilag" instead of "afsnit"
+\subfile{Bilag/Bilag}
+\end{appendices}
 
-\include{Afsnit/exercise5}
-\newpage
-
-\include{Afsnit/exercise6}
-\newpage
-
-\include{Afsnit/exercise7}
-\newpage
-
-\include{Afsnit/exercise8}
-\newpage
-
-\include{Afsnit/exercise9}
-\newpage
-
-\include{Afsnit/exercise10}
-\newpage
 \end{document}

@@ -1,0 +1,11 @@
+{
+    // Build with latexmk, which also runs biber (see .latexmkrc)
+    "latex-workshop.latex.recipe.default": "latexmk",
+    // Build automatically every time a file is saved
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    // Always build main.tex, even when editing a chapter in Kapitler/
+    "latex-workshop.latex.rootFile.useSubFile": false,
+    // Auto-save after 1 s of no typing (instead of 10 ms), so it doesn't build on every keystroke
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000
+}
