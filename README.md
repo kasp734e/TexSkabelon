@@ -2,6 +2,8 @@
 
 LaTeX-skabelon til rapporter på Aarhus Universitet (Institut for Elektro- og Computerteknologi) med AU-header, forside, forkortelser, kildeliste, bilag og automatisk tegntælling.
 
+Skabelonen er sat op efter mine egne præferencer (skrifttype, layout, tabelstil, kildehenvisninger som fodnoter osv.), så tilpas gerne `Preamble.tex` og resten til dine egne.
+
 Brug den med **Use this template** øverst på GitHub-siden.
 
 📄 **[Se hvordan skabelonen ser ud (Eksempel.pdf)](Eksempel.pdf)**
