@@ -4,6 +4,8 @@ LaTeX-skabelon til rapporter på Aarhus Universitet (Institut for Elektro- og Co
 
 Brug den med **Use this template** øverst på GitHub-siden.
 
+📄 **[Se hvordan skabelonen ser ud (Eksempel.pdf)](Eksempel.pdf)**
+
 ## Krav
 
 - **TeX Live / MacTeX** med `latexmk`, LuaLaTeX og `biber`.
